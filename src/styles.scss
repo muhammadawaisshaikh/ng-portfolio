@@ -12,3 +12,12 @@ body {
 .font-dm-serif-display {
     font-family: "DM Serif Display", serif;
 }
+
+.animated-line {
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    border: none;
+    margin: 20px auto;
+    transform-origin: left;
+}

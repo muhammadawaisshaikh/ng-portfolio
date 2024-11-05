@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GsapTextService } from '../../helpers/gsap/gsap-text.service';
 
 @Component({
   selector: 'app-banner',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.scss'
 })
-export class BannerComponent {
+export class BannerComponent implements OnInit {
+
+  constructor(
+    private gsapService: GsapTextService
+  ) {}
+
+  ngOnInit(): void {
+    this.gsapService.titleAnimation('.heading', 50, 2, 0.3);
+    this.gsapService.animateLine('.animated-line', '100%', 4,'power2.out');
+  }
 
 }
