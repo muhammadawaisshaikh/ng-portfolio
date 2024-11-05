@@ -1,16 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { GsapTextService } from '../../helpers/gsap/gsap-text.service';
+import { InfiniteScrollingItemsComponent } from '../infinite-scrolling-items/infinite-scrolling-items.component';
+import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
 
 @Component({
   selector: 'app-banner',
   standalone: true,
-  imports: [],
+  imports: [InfiniteScrollingItemsComponent],
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.scss'
 })
 export class BannerComponent implements OnInit {
 
-  skills: string[] = ['JavaScript', 'Typescript', 'Angular', 'ReactJS', 'NodeJS', 'Python', 'Artificial Intelligence']
+  skills: string[] = ['JavaScript', 'Typescript', 'Angular', 'NgRX', 'RxJS', 'ReactJS', 'Redux', 'NodeJS', 'Python', 'Ai']
+  infiniteScrollConfig: IInfiniteContentScroll = {
+    container: {
+      width: '100%',
+      height: '50px'
+    },
+    content: {
+      width: '1080px',
+      height: '50px'
+    }
+  }
 
   constructor(
     private gsapService: GsapTextService
