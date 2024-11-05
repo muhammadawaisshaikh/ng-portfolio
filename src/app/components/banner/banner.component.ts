@@ -12,7 +12,7 @@ import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
 })
 export class BannerComponent implements OnInit {
 
-  skills: string[] = ['JavaScript', 'Typescript', 'Angular', 'NgRX', 'RxJS', 'ReactJS', 'Redux', 'NodeJS', 'Python', 'Ai']
+  skills: string[] = ['JavaScript', 'Typescript', 'Angular', 'NgRX', 'RxJS', 'ReactJS', 'Redux', 'NodeJS', 'Python', 'Ai', 'TanStack', 'UI', 'MicroFrontends', 'MicroServices']
   infiniteScrollConfig: IInfiniteContentScroll = {
     container: {
       width: '100%',
