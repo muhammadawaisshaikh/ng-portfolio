@@ -17,4 +17,14 @@
         letter-spacing: 1.5rem;
         text-transform: uppercase;
     }
+
+    .skills {
+        display: flex;
+        padding-top: 5rem;;
+        p {
+            padding: 0 2rem;
+            text-transform: capitalize;
+            letter-spacing: normal;
+        }
+    }
 }

@@ -3,5 +3,11 @@
         <h1 class="heading">Muhammad Awais</h1>
         <p class="subtitle">Lead Software Engineer</p>
         <hr class="animated-line">
+
+        <div class="skills">
+            @for (skill of skills; track $index; let i = $index) {
+                <p><strong>#</strong>{{skill}}</p>
+            }
+        </div>
     </div>
 </div>

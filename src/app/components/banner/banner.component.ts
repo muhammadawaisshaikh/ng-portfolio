@@ -10,6 +10,8 @@ import { GsapTextService } from '../../helpers/gsap/gsap-text.service';
 })
 export class BannerComponent implements OnInit {
 
+  skills: string[] = ['JavaScript', 'Typescript', 'Angular', 'ReactJS', 'NodeJS', 'Python', 'Artificial Intelligence']
+
   constructor(
     private gsapService: GsapTextService
   ) {}
