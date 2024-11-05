@@ -13,13 +13,13 @@ export class GsapGlobalService {
    */
   globalLoadingSplash(topCover: string = '.top-cover', bottomCover: string = '.bottom-cover') {
     gsap.to(topCover, {
-      y: '-100%', // Move the top cover up
+      height: 0, // Animate the top cover's height to 0
       duration: 1.5,
       ease: 'power2.out',
     });
 
     gsap.to(bottomCover, {
-      y: '100%', // Move the bottom cover down
+      height: 0, // Animate the bottom cover's height to 0
       duration: 1.5,
       ease: 'power2.out',
     });
