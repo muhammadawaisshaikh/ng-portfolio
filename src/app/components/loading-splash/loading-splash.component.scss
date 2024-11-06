@@ -1,15 +1,17 @@
 .cover {
     position: absolute;
-    width: 100%;
-    height: 50%;
-    background-color: #333;
-    z-index: 2;
-}
-
-.top-cover {
+    height: 100%;
     top: 0;
 }
 
-.bottom-cover {
-    bottom: 0;
+.left-cover {
+    left: 0;
+    width: 50%;
+    background-color: #000;
+}
+
+.right-cover {
+    right: 0;
+    width: 50%;
+    background-color: #000;
 }

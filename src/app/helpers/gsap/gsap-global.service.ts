@@ -11,18 +11,20 @@ export class GsapGlobalService {
   /**
    * Animate the covers to reveal the content
    */
-  globalLoadingSplash(topCover: string = '.top-cover', bottomCover: string = '.bottom-cover') {
-    gsap.to(topCover, {
-      height: 0, // Animate the top cover's height to 0
+  globalLoadingSplash(leftCover: string = '.left-cover', rightCover: string = '.right-cover') {
+    gsap.to(leftCover, {
+      width: 0,
+      x: '-100%',
       duration: 2,
-      delay: 0.3,
+      delay: 1,
       ease: 'power2.out',
     });
-
-    gsap.to(bottomCover, {
-      height: 0, // Animate the bottom cover's height to 0
+  
+    gsap.to(rightCover, {
+      width: 0,
+      x: '100%',
       duration: 2,
-      delay: 0.3,
+      delay: 1,
       ease: 'power2.out',
     });
   }
