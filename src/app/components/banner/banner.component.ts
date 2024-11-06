@@ -30,7 +30,7 @@ export class BannerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.gsapService.titleAnimation('.heading', 50, 2, 0.3);
+    this.gsapService.titleAnimation('.heading', 100, 3, 0.3);
   }
 
 }
