@@ -13,6 +13,7 @@ import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
 export class BannerComponent implements OnInit {
 
   skills: string[] = ['JavaScript', 'Typescript', 'Angular', 'NgRX', 'RxJS', 'ReactJS', 'Redux', 'Zustand', 'NodeJS', 'NestJS', 'Python', 'Ai', 'ML', 'DL', 'TanStack', 'UI', 'MicroFrontends', 'MicroServices', 'Architect', 'Software', 'Web', 'Engineering']
+  
   infiniteScrollConfig: IInfiniteContentScroll = {
     container: {
       width: '100%',
@@ -20,7 +21,7 @@ export class BannerComponent implements OnInit {
     },
     content: {
       width: '1080px',
-      height: '50px'
+      height: '50px',
     }
   }
 
@@ -30,7 +31,6 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.gsapService.titleAnimation('.heading', 50, 2, 0.3);
-    this.gsapService.animateLine('.animated-line', '100%', 4,'power2.out');
   }
 
 }

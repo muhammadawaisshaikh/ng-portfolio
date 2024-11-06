@@ -1,1 +1,9 @@
-// mixins here
+@mixin animatedGradientText($keyFrame: '', $position: 90deg, $c1: #000000, $c2: #444444, $c3: #000000) {
+    background: linear-gradient($position, $c1 5%, $c2 50%, $c3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: $keyFrame 5s ease-in-out infinite alternate;
+}

@@ -30,7 +30,7 @@ export class GsapTextService {
    * @param delay 
    * @param ease 
    */
-  titleAnimation = (className: string, y = 50, duration = 1, delay = 0, ease = 'power2.out') => {
+  titleAnimation = (className: string, y = 50, duration = 2, delay = 0, ease = 'power2.out') => {
     if (className) {
       gsap.from(className, {
         y,

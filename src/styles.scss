@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('./assets/scss/mixins.scss');
+@import 'assets/scss/mixins.scss';
 
 body {
     font-family: "Montserrat", serif !important;
@@ -26,21 +26,15 @@ body {
 
 // animated gradient text
 .animated-gradient-text {
-    background: linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(0,65,255,1) 50%, rgba(0,0,0,1) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    background-size: 500% auto;
-    animation: textShine 5s ease-in-out infinite alternate;
+    @include animatedGradientText(textShine, 90deg, #000000, #444444, #000000);
 }
 
 @keyframes textShine {
-    0% {
+    from {
         background-position: 0% 50%;
     }
 
-    100% {
+    to {
         background-position: 100% 50%;
     }
 }
