@@ -14,6 +14,6 @@ export class LoadingSplashComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.gsapService.globalLoadingSplash('.left-cover', '.right-cover')
+    this.gsapService.globalLoadingSplash('.left-cover', '.right-cover', 1);
   }
 }

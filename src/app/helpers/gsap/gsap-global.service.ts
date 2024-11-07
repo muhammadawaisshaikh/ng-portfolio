@@ -11,12 +11,12 @@ export class GsapGlobalService {
   /**
    * Animate the covers to reveal the content
    */
-  globalLoadingSplash(leftCover: string = '.left-cover', rightCover: string = '.right-cover') {
+  globalLoadingSplash(leftCover: string = '.left-cover', rightCover: string = '.right-cover', delay: number = 1) {
     gsap.to(leftCover, {
       width: 0,
       x: '-100%',
       duration: 2,
-      delay: 1,
+      delay: delay,
       ease: 'power2.out',
     });
   
@@ -24,7 +24,7 @@ export class GsapGlobalService {
       width: 0,
       x: '100%',
       duration: 2,
-      delay: 1,
+      delay: delay,
       ease: 'power2.out',
     });
   }
