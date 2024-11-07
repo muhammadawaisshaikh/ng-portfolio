@@ -1,0 +1,27 @@
+header {
+    position: absolute;
+    z-index: 2;
+    background: transparent;
+    text-align: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        li {
+            a {
+                padding: 0.5rem 2rem;
+                text-decoration: none;
+                color: #000;
+                font-size: 1rem;
+                font-weight: 500;
+                transition: 0.5s;
+                &:hover {
+                    background: rgba(255, 255, 255, 0.215);
+                    border-radius: 30px;
+                }
+            }
+        }
+    }
+}

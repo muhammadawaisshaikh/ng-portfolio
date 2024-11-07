@@ -1,0 +1,9 @@
+<header>
+    <ul>
+        @for (tab of tabs; track $index) {
+            <li>
+                <a [routerLink]="tab.path">{{tab.name}}</a>
+            </li>
+        }
+    </ul>
+</header>
