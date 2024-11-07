@@ -28,4 +28,13 @@ export class GsapGlobalService {
       ease: 'power2.out',
     });
   }
+
+  globalLoaderTypo(textLoading: string = '.text-loading', delay: number = 1, duration: number = 1) {
+    gsap.to(textLoading, {
+      opacity: '0',
+      duration: duration,
+      delay: delay,
+      ease: 'power2.out',
+    });
+  }
 }

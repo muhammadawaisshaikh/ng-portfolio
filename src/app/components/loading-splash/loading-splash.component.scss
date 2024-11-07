@@ -24,3 +24,15 @@
     // background-position: left;
     text-align: start;
 }
+
+.text-loading {
+    color: white;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 6;
+}
