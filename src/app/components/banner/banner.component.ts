@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GsapTextService } from '../../helpers/gsap/gsap-text.service';
 import { InfiniteScrollingItemsComponent } from '../infinite-scrolling-items/infinite-scrolling-items.component';
 import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
+import { HeaderComponent } from '../../layout/header/header.component';
 
 @Component({
   selector: 'app-banner',
   standalone: true,
-  imports: [InfiniteScrollingItemsComponent],
+  imports: [InfiniteScrollingItemsComponent, HeaderComponent],
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.scss'
 })
