@@ -1,4 +1,6 @@
 <router-outlet />
 
 <!-- Loading Splash screen to go top and bottom smoothly  -->
-<app-loading-splash />
+@if (!isHide) {
+    <app-loading-splash />
+}
