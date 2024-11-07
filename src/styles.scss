@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'assets/scss/mixins.scss';
+
+body {
+    font-family: "Montserrat", serif !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+}
+
+.font-montserrat {
+    font-family: "Montserrat", serif;
+}
+
+.font-dm-serif-display {
+    font-family: "DM Serif Display", serif;
+}
+
+.animated-line {
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    border: none;
+    margin: 20px auto;
+    transform-origin: left;
+}
+
+// animated gradient text
+.animated-gradient-text {
+    @include animatedGradientText(textShine, 90deg, #000000, #444444, #000000);
+}
+
+@keyframes textShine {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}

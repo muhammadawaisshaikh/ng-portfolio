@@ -1,0 +1,38 @@
+.cover {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 5;
+}
+
+.left-cover {
+    left: 0;
+    width: 50%;
+    background-color: #000;
+    // background-image: url('../../../assets/img/recognitions.png');
+    // background-position: right;
+    text-align: end;
+}
+
+.right-cover {
+    right: 0;
+    width: 50%;
+    background-color: #000;
+    // background-image: url('../../../assets/img/connections.png');
+    // background-position: left;
+    text-align: start;
+}
+
+.text-loading {
+    color: white;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 6;
+}
