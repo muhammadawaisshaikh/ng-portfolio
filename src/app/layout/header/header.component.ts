@@ -10,11 +10,11 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
   tabs: { path: string, name: string }[] = [
-    { path: '', name: 'Experience'},
-    { path: '', name: 'Portfolio'},
-    { path: '', name: 'Technology Talks'},
-    { path: '', name: 'Certifications'},
-    { path: '', name: 'Publications'},
-    { path: '', name: 'Honors & Awards'},
+    { path: '/experience', name: 'Experience'},
+    { path: '/portfolio', name: 'Portfolio'},
+    { path: '/technology-talks', name: 'Technology Talks'},
+    { path: '/certifications', name: 'Certifications'},
+    { path: '/publications', name: 'Publications'},
+    { path: '/honors-awards', name: 'Honors & Awards'},
   ]
 }
