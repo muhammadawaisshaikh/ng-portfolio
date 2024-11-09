@@ -7,10 +7,15 @@ import { BehaviorSubject } from 'rxjs';
 export class GlobalStateService {
 
   public isHide: any = new BehaviorSubject(false);
+  public isPageAnimate: any = new BehaviorSubject(false);
 
   constructor() { }
 
   setIsHide(val: boolean) {
     return this.isHide.next(val);
+  }
+
+  setIsPageAnimate(val: boolean) {
+    return this.isPageAnimate.next(val);
   }
 }
