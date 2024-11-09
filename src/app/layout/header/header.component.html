@@ -2,7 +2,7 @@
     <ul>
         @for (tab of tabs; track $index) {
             <li>
-                <a [routerLink]="tab.path">{{tab.name}}</a>
+                <a (click)="onNavigate(tab.path)">{{tab.name}}</a>
             </li>
         }
     </ul>

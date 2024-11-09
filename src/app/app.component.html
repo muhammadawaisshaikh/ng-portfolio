@@ -1,3 +1,8 @@
+<div class="page-animate" [ngClass]="isPageAnimate ? 'show' : 'hide'">
+    <button (click)="close()">Close</button>
+    <router-outlet name="pages" />
+</div>
+
 <router-outlet />
 
 <!-- Loading Splash screen to go top and bottom smoothly  -->
