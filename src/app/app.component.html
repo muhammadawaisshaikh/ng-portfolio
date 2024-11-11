@@ -1,6 +1,13 @@
 <div class="page-animate" [ngClass]="isPageAnimate ? 'show' : 'hide'">
-    <button (click)="close()">Close</button>
-    <router-outlet name="pages" />
+    <div class="container">
+        <a (click)="close()" class="close">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </a>
+
+        <div class="content">
+            <router-outlet name="pages" />
+        </div>
+    </div>
 </div>
 
 <router-outlet />

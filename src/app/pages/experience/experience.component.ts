@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-experience',
@@ -11,7 +10,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ExperienceComponent implements OnInit {
 
-  private apiService = inject(ApiService);
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
     this.getAboutData();

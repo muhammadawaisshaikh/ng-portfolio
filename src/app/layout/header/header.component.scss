@@ -17,6 +17,7 @@ header {
                 font-size: 1rem;
                 font-weight: 500;
                 transition: 0.5s;
+                cursor: pointer;
                 &:hover {
                     background: rgba(255, 255, 255, 0.215);
                     border-radius: 30px;

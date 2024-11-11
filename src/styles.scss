@@ -15,6 +15,17 @@ body {
     font-family: "DM Serif Display", serif;
 }
 
+.bg-wrapper {
+    font-size: 15rem;
+    text-align: center;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+}
+
 .animated-line {
     width: 0;
     height: 2px;
