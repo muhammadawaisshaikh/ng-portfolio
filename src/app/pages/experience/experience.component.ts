@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api/api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-experience',
@@ -7,6 +9,17 @@ import { Component } from '@angular/core';
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css'
 })
-export class ExperienceComponent {
+export class ExperienceComponent implements OnInit {
 
+  private apiService = inject(ApiService);
+
+  ngOnInit(): void {
+    this.getAboutData();
+  }
+
+  getAboutData() {
+    this.apiService.getAboutInfo().subscribe((res: any) => {
+      console.log('About', res);
+    });
+  }
 }
