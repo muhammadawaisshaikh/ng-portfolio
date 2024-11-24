@@ -1,11 +1,11 @@
-import { NgStyle } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
 
 @Component({
   selector: 'app-infinite-scrolling-items',
   standalone: true,
-  imports: [NgStyle],
+  imports: [NgStyle, NgClass],
   templateUrl: './infinite-scrolling-items.component.html',
   styleUrl: './infinite-scrolling-items.component.scss'
 })
@@ -14,6 +14,7 @@ export class InfiniteScrollingItemsComponent implements OnInit{
 
   containerStyle = {};
   contentStyle = {};
+  position: string = 'horizontal';
 
   ngOnInit() {
     this.containerStyle = {
@@ -25,5 +26,7 @@ export class InfiniteScrollingItemsComponent implements OnInit{
       width: this.config?.content.width,
       height: this.config?.content.height
     };
+
+    this.position = this.config.position as string;
   }
 }

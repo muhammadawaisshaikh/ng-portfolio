@@ -4,7 +4,7 @@
 body {
     font-family: "Montserrat", serif !important;
     margin: 0 !important;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 .font-montserrat {
@@ -13,6 +13,13 @@ body {
 
 .font-dm-serif-display {
     font-family: "DM Serif Display", serif;
+}
+
+.image-circle-sm {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .bg-wrapper {

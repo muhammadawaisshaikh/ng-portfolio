@@ -4,9 +4,9 @@
     <strong>Experience</strong>
 </h1>
 
-<div class="container">
+<div class="container section">
     <div class="row">
-        <div class="col-7">
+        <div class="col-md-7 col-12">
             <div class="row">
                 <div class="col-12">
                     <img class="w-25 rounded-circle pb-4" [src]="about.sideAvatar" alt="sideAvatar" />
@@ -21,10 +21,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-5">
-            <div class="items">
-                
-            </div>
+        <div class="col-md-5 col-12">
+            <app-infinite-scrolling-items [config]="infiniteScrollConfig">
+                <div class="items">
+                    @for (experience of experiences; track $index) {
+                        <div class="experience text-center mb-5">
+                            <img class="image-circle-sm" [src]="experience.avatarUrl" alt="sideAvatar" />
+                            <h4><strong>{{experience.designation}}</strong></h4>
+                            <p class="mb-0">{{experience.organization}}</p>
+                            <p>{{experience.tenure}}</p>
+                        </div>
+                    }
+                </div>
+            </app-infinite-scrolling-items>
         </div>
     </div>
 </div>

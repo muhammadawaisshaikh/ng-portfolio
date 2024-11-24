@@ -6,5 +6,6 @@ export interface IInfiniteContentScroll {
     content: {
         width: string;
         height: string;
-    }
+    },
+    position?: string
 }

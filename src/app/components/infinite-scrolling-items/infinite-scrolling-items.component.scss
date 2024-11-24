@@ -2,6 +2,7 @@
     overflow: hidden;
 }
 
+// horizontal 
 .sliding-content {
     animation: slide 10s linear infinite;
 }
@@ -11,6 +12,20 @@
         transform: translate3d(0, 0, 0);
     }
     100% {
-        transform: translate3d(-50%, 0, 0); /* Moves the background leftward */
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+// vertical 
+.sliding-content-vertical {
+    animation: slide-vertical 10s linear infinite;
+}
+
+@keyframes slide-vertical {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, -50%, 0);
     }
 }

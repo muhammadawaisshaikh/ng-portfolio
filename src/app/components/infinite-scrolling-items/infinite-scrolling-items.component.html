@@ -1,5 +1,5 @@
 <div class="container" [ngStyle]="containerStyle">
-  <div class="sliding-content" [ngStyle]="contentStyle">
+  <div [ngClass]="position === 'horizontal' ? 'sliding-content' : 'sliding-content-vertical'" [ngStyle]="contentStyle">
     <ng-content></ng-content>
   </div>
 </div>
