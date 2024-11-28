@@ -24,8 +24,6 @@
     align-items: center;
     justify-content: center;
     @include respond(small) {
-        width: 90%;
-        height: 90vh;
         padding: 0;
     }
 
