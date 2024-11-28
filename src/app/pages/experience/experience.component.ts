@@ -41,14 +41,12 @@ export class ExperienceComponent implements OnInit {
   getAboutData() {
     this.apiService.getAboutInfo().subscribe((res: any) => {
       this.about = Object.entries(res)[0][1] as IAbout;
-      console.log(this.about);
     });
   }
 
   getExperiencesData() {
     this.apiService.getExperiencesInfo().subscribe((res: any) => {
       this.experiences = Object.values(res) as IExperience[];
-      console.log(this.experiences);
     });
   }
 }

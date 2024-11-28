@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'YOUR_FIREBASE_API_URL'
+    apiUrl: 'https://portfolio-8c8b9-default-rtdb.firebaseio.com'
 }
