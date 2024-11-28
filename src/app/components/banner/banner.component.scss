@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 #gradient-canvas {
     --gradient-color-1: #6ec3f4;
     --gradient-color-2: #3a3aff;
@@ -21,10 +23,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include respond(small) {
+        width: 90%;
+        height: 90vh;
+        padding: 0;
+    }
 
     h1 {
         font-size: 10rem;
         margin: 0;
+        @include respond(small) {
+            font-size: 2rem;
+            font-weight: 600;
+        }
     }
 
     p {
@@ -32,6 +43,11 @@
         margin: 0;
         letter-spacing: 1.5rem;
         text-transform: uppercase;
+        @include respond(small) {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
     }
 
     app-infinite-scrolling-items {
@@ -59,9 +75,16 @@
         width: 50%;
         display: block;
         margin: 3rem auto 0 auto;
+        @include respond(small) {
+            width: 100%;
+        }
         .hashtag-text {
             font-weight: 600;
             animation: fadeInOut 1s ease-in-out infinite;
+            @include respond(small) {
+                font-size: 1rem;
+                letter-spacing: 5px;
+            }
         }
     
         @keyframes fadeInOut {
