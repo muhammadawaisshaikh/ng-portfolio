@@ -24,7 +24,8 @@ export class BannerComponent implements OnInit, OnDestroy {
     content: {
       width: '1080px',
       height: '50px',
-    }
+    },
+    position: 'horizontal'
   }
 
   currentHashtag: string = this.hashtags[0];

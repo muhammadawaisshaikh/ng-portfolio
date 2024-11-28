@@ -7,7 +7,7 @@
         <h1 class="heading animated-gradient-text">Muhammad Awais</h1>
         <p class="subtitle">Lead Software Engineer</p>
 
-        <app-infinite-scrolling-items>
+        <app-infinite-scrolling-items [config]="infiniteScrollConfig">
             <div class="skills">
                 @for (skill of skills; track $index; let i = $index) {
                     <p><strong>#</strong>{{skill}}</p>
