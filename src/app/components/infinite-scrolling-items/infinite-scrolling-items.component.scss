@@ -5,6 +5,7 @@
 // horizontal 
 .sliding-content {
     animation: slide 10s linear infinite;
+    position: absolute;
 }
 
 @keyframes slide {
