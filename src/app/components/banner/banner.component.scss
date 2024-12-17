@@ -23,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     @include respond(small) {
         padding: 0;
     }
