@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { IExperience } from '../../interfaces/experience';
-import { InfiniteScrollingItemsComponent } from '../../components/infinite-scrolling-items/infinite-scrolling-items.component';
 
 @Component({
   selector: 'app-experience',

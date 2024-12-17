@@ -4,6 +4,7 @@ import { IAbout } from '../../interfaces/about';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environment/environment';
 import { IExperience } from '../../interfaces/experience';
+import { ITechSpeaking } from '../../interfaces/tech-speaking';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,10 @@ export class ApiService {
   getExperiencesInfo(): Observable<IExperience> {
     const experiencesURL: string = `${environment.apiUrl}/experiences.json`;
     return this.http.get<IExperience>(experiencesURL);
+  }
+
+  getTechSpeakingInfo(): Observable<ITechSpeaking> {
+    const experiencesURL: string = `${environment.apiUrl}/tech-speaking.json`;
+    return this.http.get<ITechSpeaking>(experiencesURL);
   }
 }
