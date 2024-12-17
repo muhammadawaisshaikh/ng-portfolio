@@ -8,12 +8,14 @@
     <div class="row">
         <div class="col-md-12 col-12">
                 <div class="items row">
-                    @for (experience of techSpeaking; track $index) {
+                    @for (item of techSpeaking; track $index) {
                         <div class="col-md-4 col-12 experience text-center mb-5">
-                            <img class="event-img rounded mb-3" [src]="experience.coverImg" alt="Tech Speaker" />
-                            <h5 class="text-truncate"><strong>{{experience.event}}</strong></h5>
-                            <p class="mb-0">{{experience.organizer}}</p>
-                            <p>{{experience.date}}</p>
+                            <img class="event-img rounded mb-3" [src]="item.coverImg" alt="Tech Speaker" />
+                            <h5 class="text-truncate"><strong>{{item.event}}</strong></h5>
+                            <p class="mb-0">{{item.organizer}}</p>
+                            <p>{{item.date}}</p>
+
+                            <app-hashtags [hashtags]="getHashTags(item.technology ?? '')"></app-hashtags>
                         </div>
                     }
                 </div>

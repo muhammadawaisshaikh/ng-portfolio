@@ -1,0 +1,11 @@
+.hashtag-item {
+    padding: 5px 10px;
+    border-radius: 30px;
+    color: white;
+    transition: transform 0.3s;
+    font-size: 15px;
+}
+
+.hashtag-item:hover {
+    transform: scale(1.05);
+}
