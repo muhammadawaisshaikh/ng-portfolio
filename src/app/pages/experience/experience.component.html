@@ -6,34 +6,17 @@
 
 <div class="container section">
     <div class="row">
-        <div class="col-md-7 col-12">
-            <div class="row">
-                <div class="col-12">
-                    <img class="w-25 rounded-circle" [src]="about.sideAvatar" alt="sideAvatar" />
-                </div>
-                <div class="col-12">
-                    <div class="ps-0 pt-4">
-                        <h4><strong>{{about.title}}</strong></h4>
-                        <p>{{about.typo}}</p>
-                        <p><strong>{{about.typoBold}}</strong></p>
-                        <p>{{about.skillsTypo}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 col-12">
-            <app-infinite-scrolling-items [config]="infiniteScrollConfig">
-                <div class="items">
+        <div class="col-md-12 col-12">
+                <div class="items row">
                     @for (experience of experiences; track $index) {
-                        <div class="experience text-center mb-5">
-                            <img class="image-circle-sm" [src]="experience.avatarUrl" alt="sideAvatar" />
+                        <div class="col-md-4 col-12 experience text-center mb-5">
+                            <img class="image-circle-sm mb-3" [src]="experience.avatarUrl" alt="sideAvatar" />
                             <h4><strong>{{experience.designation}}</strong></h4>
                             <p class="mb-0">{{experience.organization}}</p>
                             <p>{{experience.tenure}}</p>
                         </div>
                     }
                 </div>
-            </app-infinite-scrolling-items>
         </div>
     </div>
 </div>

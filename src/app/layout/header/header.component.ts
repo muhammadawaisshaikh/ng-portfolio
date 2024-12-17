@@ -12,6 +12,7 @@ import { NgClass } from '@angular/common';
 })
 export class HeaderComponent {
   tabs: { path: string, name: string }[] = [
+    { path: 'about', name: 'About'},
     { path: 'experience', name: 'Experience'},
     { path: 'portfolio', name: 'Portfolio'},
     { path: 'technology-talks', name: 'Technology Talks'},

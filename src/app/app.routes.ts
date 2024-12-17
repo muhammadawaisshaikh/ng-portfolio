@@ -7,6 +7,12 @@ export const routes: Routes = [
             import('./pages/homepage/homepage.component').then(c => c.HomepageComponent)
     },
     {
+        path: 'about',
+        loadComponent: () =>
+            import('./pages/about/about.component').then(c => c.AboutComponent),
+        outlet: 'pages'
+    },
+    {
         path: 'experience',
         loadComponent: () =>
             import('./pages/experience/experience.component').then(c => c.ExperienceComponent),
