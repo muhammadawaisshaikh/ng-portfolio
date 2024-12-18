@@ -79,3 +79,20 @@ body {
         font-size: 14px;
     }
 }
+
+::-webkit-scrollbar {width: 7px;/* height: 440px; */}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+display:none;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #eee;
+  -webkit-border-radius:10px;
+  border-left:1px #999 #888;
+}
+
+::-webkit-scrollbar-thumb {
+-webkit-border-radius:10px;
+background: #454d5c;
+}
