@@ -24,8 +24,6 @@ export class TechnologyTalksComponent {
   getTechSpeakingsData() {
     this.apiService.getTechSpeakingInfo().subscribe((res: any) => {
       this.techSpeaking = Object.values(res) as ITechSpeaking[];
-
-      console.log(this.techSpeaking);
     });
   }
 
