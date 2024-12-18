@@ -7,6 +7,7 @@
 <div class="container section inner-page-main-section">
     <div class="row">
         <div class="col-md-12 col-12">
+            @if (experiences && experiences.length) {
                 <div class="items row">
                     @for (experience of experiences; track $index) {
                         <div class="col-md-4 col-12 experience text-center mb-5">
@@ -17,6 +18,12 @@
                         </div>
                     }
                 </div>
+            }
+            @else {
+                <div class="items row">
+                    <p>Loading ...</p>
+                </div>
+            }
         </div>
     </div>
 </div>

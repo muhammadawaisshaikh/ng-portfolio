@@ -7,10 +7,12 @@
 <div class="container inner-page-main-section">
     <div class="row">
         <div class="col-md-12 col-12">
+            @if (techSpeaking && techSpeaking.length) {
                 <div class="items row">
                     @for (item of techSpeaking; track $index) {
                         <div class="col-md-4 col-12 experience text-center mb-5">
                             <img class="event-img rounded mb-3" [src]="item.coverImg" alt="Tech Speaker" />
+                                                   
                             <h5 class="text-truncate"><strong>{{item.event}}</strong></h5>
                             <p class="mb-0">{{item.organizer}}</p>
                             <p>{{item.date}}</p>
@@ -19,6 +21,12 @@
                         </div>
                     }
                 </div>
+            }
+            @else {
+                <div class="items row">
+                    <p>Loading ...</p>
+                </div>
+            }
         </div>
     </div>
 </div>
