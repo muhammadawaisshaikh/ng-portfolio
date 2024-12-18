@@ -64,3 +64,18 @@ body {
     position: absolute;
     width: 100%;
 }
+
+.card-c {
+    position: relative;
+    .read-more {
+        position: absolute;
+        top: 10px;
+        right: 30px;
+        background: #00000075;
+        color: white;
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 25px;
+        font-size: 14px;
+    }
+}
