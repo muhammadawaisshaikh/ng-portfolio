@@ -1,0 +1,12 @@
+@if (isOpen) {
+    <div class="popup" (click)="closePopup()">
+        <div class="popup-content" (click)="$event.stopPropagation()">
+            <a class="close" (click)="closePopup()">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </a>
+            <div class="content">
+                <ng-content />
+            </div>
+        </div>
+    </div>
+}
