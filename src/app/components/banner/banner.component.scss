@@ -31,6 +31,9 @@
     h1 {
         font-size: 10rem;
         margin: 0;
+        @include respond(xlarge) {
+            font-size: 7rem;
+        }
         @include respond(small) {
             font-size: 2rem;
             font-weight: 600;
@@ -42,6 +45,9 @@
         margin: 0;
         letter-spacing: 1.5rem;
         text-transform: uppercase;
+        @include respond(xlarge) {
+            font-size: 1.5rem;
+        }
         @include respond(small) {
             font-size: 1rem;
             font-weight: 400;
@@ -67,6 +73,9 @@
         width: 50%;
         display: block;
         margin: 3rem auto 0 auto;
+        @include respond(xlarge) {
+            width: 70%;
+        }
         @include respond(small) {
             width: 100%;
         }
