@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalStateService } from '../../services/global-state/global-state.service';
 import { NgClass } from '@angular/common';
@@ -10,7 +10,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   tabs: { path: string, name: string }[] = [
     { path: 'about', name: 'About'},
     { path: 'experience', name: 'Experience'},
@@ -29,6 +29,21 @@ export class HeaderComponent {
     private globalState: GlobalStateService,
     private router: Router
   ) { }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.checkIfNamedOutlet();
+    });
+  }
+
+  checkIfNamedOutlet() {
+    const urlTree = this.router.parseUrl(this.router.url);
+
+    if (urlTree.root.children['pages']) {
+      const path: string = urlTree.root.children['pages']?.segments[0]?.path;
+      this.onNavigate(path);
+    }
+  }
 
   onNavigate(link: string) {
     this.globalState.setIsPageAnimate(true);
