@@ -1,5 +1,11 @@
 @import '../../../styles.scss';
 
+.loading-splash {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
 .cover {
     position: absolute;
     height: 100%;
