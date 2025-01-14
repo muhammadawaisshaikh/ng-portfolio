@@ -5,24 +5,31 @@
 </h1>
 
 <div class="container section">
-    <div class="row">
-        <div class="col-md-7 col-12">
-            <div class="row">
-                <div class="col-12">
-                    <img class="w-25 rounded-circle" [src]="about.sideAvatar" alt="sideAvatar" />
-                </div>
-                <div class="col-12">
-                    <div class="ps-0 pt-4">
-                        <h4><strong>{{about.title}}</strong></h4>
-                        <p>{{about.typo}}</p>
-                        <p><strong>{{about.typoBold}}</strong></p>
-                        <p>{{about.skillsTypo}}</p>
+    @if (about && about.title && about.typo && about.typoBold && about.skillsTypo) {
+        <div class="row">
+            <div class="col-md-7 col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <img class="w-25 rounded-circle" [src]="about.sideAvatar" alt="sideAvatar" />
+                    </div>
+                    <div class="col-12">
+                        <div class="ps-0 pt-4">
+                            <h4><strong>{{about.title}}</strong></h4>
+                            <p>{{about.typo}}</p>
+                            <p><strong>{{about.typoBold}}</strong></p>
+                            <p>{{about.skillsTypo}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-5 col-12">
+
+            </div>
         </div>
-        <div class="col-md-5 col-12">
-            
+    }
+    @else {
+        <div class="row">
+            <p>Loading ...</p>
         </div>
-    </div>
+    }
 </div>
