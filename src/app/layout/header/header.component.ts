@@ -4,11 +4,10 @@ import { GlobalStateService } from '../../services/global-state/global-state.ser
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [NgClass],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [NgClass],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
   tabs: { path: string, name: string }[] = [

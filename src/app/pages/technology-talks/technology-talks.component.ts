@@ -6,11 +6,10 @@ import { PopupComponent } from '../../components/popup/popup.component';
 import { TechSpeakingDetailsComponent } from "./tech-speaking-details/tech-speaking-details.component";
 
 @Component({
-  selector: 'app-technology-talks',
-  standalone: true,
-  imports: [HashtagsComponent, PopupComponent, TechSpeakingDetailsComponent],
-  templateUrl: './technology-talks.component.html',
-  styleUrl: './technology-talks.component.scss'
+    selector: 'app-technology-talks',
+    imports: [HashtagsComponent, PopupComponent, TechSpeakingDetailsComponent],
+    templateUrl: './technology-talks.component.html',
+    styleUrl: './technology-talks.component.scss'
 })
 export class TechnologyTalksComponent {
   techSpeaking: ITechSpeaking[] = [];
