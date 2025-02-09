@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, OnInit, SimpleChanges, input } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 
 @Component({
     selector: 'app-hashtags',
