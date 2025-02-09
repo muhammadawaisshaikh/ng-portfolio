@@ -2,11 +2,10 @@ import { NgStyle } from '@angular/common';
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'app-hashtags',
-  standalone: true,
-  imports: [NgStyle],
-  templateUrl: './hashtags.component.html',
-  styleUrl: './hashtags.component.scss'
+    selector: 'app-hashtags',
+    imports: [NgStyle],
+    templateUrl: './hashtags.component.html',
+    styleUrl: './hashtags.component.scss'
 })
 export class HashtagsComponent implements OnInit {
   @Input() hashtags: string[] = [];

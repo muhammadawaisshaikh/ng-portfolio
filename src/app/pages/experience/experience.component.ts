@@ -3,11 +3,10 @@ import { ApiService } from '../../services/api/api.service';
 import { IExperience } from '../../interfaces/experience';
 
 @Component({
-  selector: 'app-experience',
-  standalone: true,
-  imports: [],
-  templateUrl: './experience.component.html',
-  styleUrl: './experience.component.scss'
+    selector: 'app-experience',
+    imports: [],
+    templateUrl: './experience.component.html',
+    styleUrl: './experience.component.scss'
 })
 export class ExperienceComponent implements OnInit {
 

@@ -3,11 +3,10 @@ import { GsapGlobalService } from '../../helpers/gsap/gsap-global.service';
 import { GlobalStateService } from '../../services/global-state/global-state.service';
 
 @Component({
-  selector: 'app-loading-splash',
-  standalone: true,
-  imports: [],
-  templateUrl: './loading-splash.component.html',
-  styleUrl: './loading-splash.component.scss'
+    selector: 'app-loading-splash',
+    imports: [],
+    templateUrl: './loading-splash.component.html',
+    styleUrl: './loading-splash.component.scss'
 })
 export class LoadingSplashComponent implements OnInit {
 

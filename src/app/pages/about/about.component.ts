@@ -4,11 +4,10 @@ import { IAbout } from '../../interfaces/about';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+    selector: 'app-about',
+    imports: [],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.css'
 })
 export class AboutComponent {
   about: IAbout = {};

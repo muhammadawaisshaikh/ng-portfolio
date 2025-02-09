@@ -5,11 +5,10 @@ import { GlobalStateService } from './services/global-state/global-state.service
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [NgClass, RouterOutlet, LoadingSplashComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [NgClass, RouterOutlet, LoadingSplashComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   isHide: boolean = false;

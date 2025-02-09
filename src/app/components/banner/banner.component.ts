@@ -5,11 +5,10 @@ import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
 import { HeaderComponent } from '../../layout/header/header.component';
 
 @Component({
-  selector: 'app-banner',
-  standalone: true,
-  imports: [InfiniteScrollingItemsComponent, HeaderComponent],
-  templateUrl: './banner.component.html',
-  styleUrl: './banner.component.scss'
+    selector: 'app-banner',
+    imports: [InfiniteScrollingItemsComponent, HeaderComponent],
+    templateUrl: './banner.component.html',
+    styleUrl: './banner.component.scss'
 })
 export class BannerComponent implements OnInit, OnDestroy {
 
