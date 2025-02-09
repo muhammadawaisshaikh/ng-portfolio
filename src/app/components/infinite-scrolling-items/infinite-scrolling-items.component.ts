@@ -1,5 +1,5 @@
 import { NgClass, NgStyle } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, input } from '@angular/core';
 import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
 
 @Component({
@@ -9,7 +9,7 @@ import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
     styleUrl: './infinite-scrolling-items.component.scss'
 })
 export class InfiniteScrollingItemsComponent implements OnInit{
-  @Input() config!: IInfiniteContentScroll;
+  readonly config = input.required<IInfiniteContentScroll>();
 
   containerStyle = {};
   contentStyle = {};
@@ -17,15 +17,16 @@ export class InfiniteScrollingItemsComponent implements OnInit{
 
   ngOnInit() {
     this.containerStyle = {
-      width: this.config?.container.width,
-      height: this.config?.container.height
+      width: this.config()?.container.width,
+      height: this.config()?.container.height
     };
 
+    const config = this.config();
     this.contentStyle = {
-      width: this.config?.content.width,
-      height: this.config?.content.height
+      width: config?.content.width,
+      height: config?.content.height
     };
 
-    this.position = this.config.position as string;
+    this.position = config.position as string;
   }
 }

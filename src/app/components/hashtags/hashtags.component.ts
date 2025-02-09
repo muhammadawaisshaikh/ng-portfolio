@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, input } from '@angular/core';
 
 @Component({
     selector: 'app-hashtags',
@@ -8,11 +8,11 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
     styleUrl: './hashtags.component.scss'
 })
 export class HashtagsComponent implements OnInit {
-  @Input() hashtags: string[] = [];
+  readonly hashtags = input<string[]>([]);
   hashtagGradients: string[] = [];
 
   ngOnInit(): void {
-    this.hashtagGradients = this.hashtags.map(() => this.getRandomGradient());
+    this.hashtagGradients = this.hashtags().map(() => this.getRandomGradient());
   }
 
   /**

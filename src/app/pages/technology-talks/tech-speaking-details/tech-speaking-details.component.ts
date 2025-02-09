@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ITechSpeaking } from '../../../interfaces/tech-speaking';
 
 @Component({
@@ -8,5 +8,5 @@ import { ITechSpeaking } from '../../../interfaces/tech-speaking';
     styleUrl: './tech-speaking-details.component.scss'
 })
 export class TechSpeakingDetailsComponent {
-  @Input() conference: ITechSpeaking = {};
+  readonly conference = input<ITechSpeaking>({});
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 
 @Component({
     selector: 'app-popup',
@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrl: './popup.component.scss'
 })
 export class PopupComponent {
-  @Input() isOpen: boolean = false;
+  readonly isOpen = input<boolean>(false);
   @Output() toggle = new EventEmitter<boolean>();
 
   closePopup() {
-    this.toggle.emit(!this.isOpen);
+    this.toggle.emit(!this.isOpen());
   }
 }
