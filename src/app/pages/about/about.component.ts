@@ -1,28 +1,17 @@
-import { Component } from '@angular/core';
-import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
-import { IAbout } from '../../interfaces/about';
-import { ApiService } from '../../services/api/api.service';
+import { Component, inject } from '@angular/core';
+import { AboutStore } from '../../store/about.store.service';
 
 @Component({
     selector: 'app-about',
     imports: [],
+    providers: [AboutStore], // if you want to make private separate instance of about store
     templateUrl: './about.component.html',
     styleUrl: './about.component.css'
 })
 export class AboutComponent {
-  about: IAbout = {};
-
-  constructor(
-    private apiService: ApiService
-  ) { }
+  readonly store = inject(AboutStore);
 
   ngOnInit(): void {
-    this.getAboutData();
-  }
-
-  getAboutData() {
-    this.apiService.getAboutInfo().subscribe((res: any) => {
-      this.about = Object.entries(res)[0][1] as IAbout;
-    });
+    this.store.loadAboutData();
   }
 }

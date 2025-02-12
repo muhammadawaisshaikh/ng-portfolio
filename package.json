@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^19.1.5",
     "@angular/platform-browser-dynamic": "^19.1.5",
     "@angular/router": "^19.1.5",
+    "@ngrx/signals": "^19.0.1",
     "@types/gsap": "^3.0.0",
     "bootstrap": "^5.3.3",
     "gsap": "^3.12.5",
