@@ -7,9 +7,9 @@
 <div class="container section inner-page-main-section">
     <div class="row">
         <div class="col-md-12 col-12">
-            @if (experiences && experiences.length) {
+            @if (store.experiences() && store.experiences().length) {
                 <div class="items row">
-                    @for (experience of experiences; track $index) {
+                    @for (experience of store.experiences(); track $index) {
                         <div class="col-md-4 col-12 experience text-center mb-5">
                             <img class="image-circle-sm mb-3" [src]="experience.avatarUrl" alt="sideAvatar" />
                             <h4><strong>{{experience.designation}}</strong></h4>
