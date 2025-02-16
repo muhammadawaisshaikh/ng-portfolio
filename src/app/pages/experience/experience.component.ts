@@ -1,28 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api/api.service';
-import { IExperience } from '../../interfaces/experience';
+import { Component, inject } from '@angular/core';
+import { ExperienceStore } from '../../store/experience.store.service';
 
 @Component({
     selector: 'app-experience',
     imports: [],
+    providers: [ExperienceStore], // Private instance for this component
     templateUrl: './experience.component.html',
     styleUrl: './experience.component.scss'
 })
-export class ExperienceComponent implements OnInit {
-
-  experiences: IExperience[] = [];
-
-  constructor(
-    private apiService: ApiService
-  ) { }
+export class ExperienceComponent {
+  readonly store = inject(ExperienceStore);
 
   ngOnInit(): void {
-    this.getExperiencesData();
-  }
+    this.store.loadExperienceData();
 
-  getExperiencesData() {
-    this.apiService.getExperiencesInfo().subscribe((res: any) => {
-      this.experiences = Object.values(res) as IExperience[];
-    });
+    this.store.loadExperienceData().then(res => {
+      console.log(res);
+      
+    })
+    
   }
 }
