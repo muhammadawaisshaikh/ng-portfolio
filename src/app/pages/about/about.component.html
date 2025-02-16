@@ -7,11 +7,13 @@
 <div class="container section">
     @if (store.about() && store.about().title && store.about().typo && store.about().typoBold && store.about().skillsTypo) {
         <div class="row">
+            <div class="col-md-5 col-12 order-first order-md-last">
+                <div class="col-12">
+                    <img class="w-100" [src]="store.about().sideAvatar" alt="sideAvatar" />
+                </div>
+            </div>
             <div class="col-md-7 col-12">
                 <div class="row">
-                    <div class="col-12">
-                        <img class="w-25 rounded-circle" [src]="store.about().sideAvatar" alt="sideAvatar" />
-                    </div>
                     <div class="col-12">
                         <div class="ps-0 pt-4">
                             <h4><strong>{{ store.about().title }}</strong></h4>
@@ -21,9 +23,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-5 col-12">
-
             </div>
         </div>
     }
