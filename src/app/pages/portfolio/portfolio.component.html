@@ -3,3 +3,27 @@
 <h1 class="text-center py-5 exp-heading">
     <strong>Portfolio</strong>
 </h1>
+
+<div class="container section inner-page-main-section">
+    <div class="row">
+        <div class="col-md-12 col-12">
+            @if (store.projects() && store.projects().length) {
+            <div class="items row">
+                @for (project of store.projects(); track $index) {
+                <div class="col-md-4 col-12 project text-center mb-5">
+                    <img class="image-circle-sm mb-3" [src]="project.imgUrl" alt="{{project.name}}" />
+                    <h4><strong>{{project.name}}</strong></h4>
+                    <p class="mb-0"><strong>Role:</strong> {{project.role}}</p>
+                    <p><strong>Association:</strong> {{project.associationWith}}</p>
+                </div>
+                }
+            </div>
+            }
+            @else {
+            <div class="items row">
+                <p>Loading ...</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>

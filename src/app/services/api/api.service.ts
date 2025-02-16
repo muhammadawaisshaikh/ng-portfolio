@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environment/environment';
 import { IExperience } from '../../interfaces/experience';
 import { ITechSpeaking } from '../../interfaces/tech-speaking';
+import { IProject } from '../../interfaces/project';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,10 @@ export class ApiService {
   getTechSpeakingInfo(): Observable<ITechSpeaking> {
     const experiencesURL: string = `${environment.apiUrl}/tech-speaking.json`;
     return this.http.get<ITechSpeaking>(experiencesURL);
+  }
+
+  getProjectsInfo(): Observable<IProject> {
+    const projectsURL: string = `${environment.apiUrl}/projects.json`;
+    return this.http.get<IProject>(projectsURL);
   }
 }
