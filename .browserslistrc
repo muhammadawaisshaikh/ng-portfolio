@@ -8,11 +8,11 @@
 # You can see what browsers were selected by your queries by running:
 #   npx browserslist
 
-last 2 Chrome versions
-last 1 Firefox version
-last 2 Edge major versions
-last 2 Safari major versions
-last 2 iOS major versions
-last 2 Android major versions
+last 3 Chrome versions
+last 3 Firefox version
+last 3 Edge major versions
+last 3 Safari major versions
+last 3 iOS major versions
+last 3 Android major versions
 Firefox ESR
 not dead
