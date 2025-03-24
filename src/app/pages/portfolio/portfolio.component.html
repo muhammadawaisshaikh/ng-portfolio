@@ -8,21 +8,19 @@
     <div class="row">
         <div class="col-md-12 col-12">
             @if (store.projects() && store.projects().length) {
-            <div class="items row">
-                @for (project of store.projects(); track $index) {
-                <div class="col-md-4 col-12 project text-center mb-5">
-                    <img class="image-circle-sm mb-3" [src]="project.imgUrl" alt="{{project.name}}" />
-                    <h4><strong>{{project.name}}</strong></h4>
-                    <p class="mb-0"><strong>Role:</strong> {{project.role}}</p>
-                    <p><strong>Association:</strong> {{project.associationWith}}</p>
+                <div class="items row">
+                    @for (project of store.projects(); track $index) {
+                    <div class="col-md-4 col-12 project text-center mb-5">
+                        <img class="image-circle-sm mb-3" [src]="project.imgUrl" alt="{{project.name}}" />
+                        <h4><strong>{{project.name}}</strong></h4>
+                        <p class="mb-0"><strong>Role:</strong> {{project.role}}</p>
+                        <p><strong>Association:</strong> {{project.associationWith}}</p>
+                    </div>
+                    }
                 </div>
-                }
-            </div>
             }
             @else {
-            <div class="items row">
-                <p>Loading ...</p>
-            </div>
+                <img class="d-block m-auto w-50" src="../../../../assets/img/loading-colored.gif" alt="Loading ..." srcset="../../../../assets/img/loading-colored.gif">
             }
         </div>
     </div>
