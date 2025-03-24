@@ -80,6 +80,10 @@ body {
     }
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 ::-webkit-scrollbar {width: 7px;/* height: 440px; */}
 
 ::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {

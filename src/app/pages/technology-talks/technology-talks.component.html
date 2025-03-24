@@ -10,7 +10,7 @@
             @if (techSpeaking && techSpeaking.length) {
                 <div class="items row">
                     @for (item of techSpeaking; track $index) {
-                        <div class="col-md-4 col-12 text-center mb-5" (click)="onDetails(item)">
+                        <div class="col-md-4 col-12 text-center mb-5 cursor-pointer" (click)="onDetails(item)">
                             <img class="event-img rounded mb-3" [src]="item.coverImg" alt="Tech Speaker" />
 
                             <h5 class="text-truncate"><strong>{{item.event}}</strong></h5>
@@ -23,9 +23,7 @@
                 </div>
             }
             @else {
-                <div class="items row">
-                    <p>Loading ...</p>
-                </div>
+                <img class="d-block m-auto w-50" src="../../../../assets/img/loading-colored.gif" alt="Loading ..." srcset="../../../../assets/img/loading-colored.gif">
             }
         </div>
     </div>
