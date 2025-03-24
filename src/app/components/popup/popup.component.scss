@@ -35,6 +35,10 @@
     z-index: 1;
     color: #dc3545;
     cursor: pointer;
+    i {
+        background: #ffffff;
+        border-radius: 50%;
+    }
 }
 
 .close:hover {
