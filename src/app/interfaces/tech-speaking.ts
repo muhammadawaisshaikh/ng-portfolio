@@ -1,4 +1,5 @@
 export interface ITechSpeaking {
+    id?: string;
     event?: string;
     description?: string;
     organizer?: string;

@@ -31,6 +31,8 @@
     </div>
 </div>
 
-<app-popup [isOpen]="isOpenPopup()" (toggle)="togglePopup()">
-    <app-tech-speaking-details [conference]="selectedTechSpeaking" />
-</app-popup>
+@if (isOpenPopup()) {
+    <app-popup [isOpen]="isOpenPopup()" (toggle)="togglePopup()">
+        <app-tech-speaking-details [conference]="selectedTechSpeaking" />
+    </app-popup>
+}

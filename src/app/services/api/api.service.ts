@@ -31,6 +31,11 @@ export class ApiService {
     return this.http.get<ITechSpeaking>(experiencesURL);
   }
 
+  getTechSpeakingInfoById(id: string): Observable<ITechSpeaking> {
+    const experiencesURL: string = `${environment.apiUrl}/tech-speaking/${id}.json`;
+    return this.http.get<ITechSpeaking>(experiencesURL);
+  }
+
   getProjectsInfo(): Observable<IProject> {
     const projectsURL: string = `${environment.apiUrl}/projects.json`;
     return this.http.get<IProject>(projectsURL);
