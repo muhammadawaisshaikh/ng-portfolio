@@ -1,17 +1,17 @@
-@if (techSpeaking().event) {
+@if (conference().event) {
     <div class="card border-0">
-        <img [src]="techSpeaking().coverImg" class="card-img-top" alt="Cover Image">
+        <img [src]="conference().coverImg" class="card-img-top" alt="Cover Image">
 
         <div class="card-body">
-            <h2 class="card-title">{{ techSpeaking().event }}</h2>
-            <h5 class="text-muted mb-3">{{ techSpeaking().area }} | {{ techSpeaking().date }}</h5>
-            <p class="card-text">{{ techSpeaking().description }}</p>
+            <h2 class="card-title">{{ conference().event }}</h2>
+            <h5 class="text-muted mb-3">{{ conference().area }} | {{ conference().date }}</h5>
+            <p class="card-text">{{ conference().description }}</p>
 
-            <h6 class="fw-bold">Organizer: {{ techSpeaking().organizer }}</h6>
-            <h6 class="fw-bold mb-4">Technology: {{ techSpeaking().technology }}</h6>
+            <h6 class="fw-bold">Organizer: {{ conference().organizer }}</h6>
+            <h6 class="fw-bold mb-4">Technology: {{ conference().technology }}</h6>
 
             <div class="row">
-                @for (img of techSpeaking().images; track $index) {
+                @for (img of conference().images; track $index) {
                 <div class="col-md-4 mb-3">
                     <img [src]="img" class="img-fluid rounded" alt="Event Image">
                 </div>
