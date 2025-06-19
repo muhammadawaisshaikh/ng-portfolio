@@ -6,6 +6,7 @@ import { environment } from '../../../environment/environment';
 import { IExperience } from '../../interfaces/experience';
 import { ITechSpeaking } from '../../interfaces/tech-speaking';
 import { IProject } from '../../interfaces/project';
+import { IBlog } from '../../interfaces/blog';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,10 @@ export class ApiService {
   getProjectsInfo(): Observable<IProject> {
     const projectsURL: string = `${environment.apiUrl}/projects.json`;
     return this.http.get<IProject>(projectsURL);
+  }
+
+  getBlogs(): Observable<IBlog> {
+    const blogsURL: string = `${environment.apiUrl}/blogs.json`;
+    return this.http.get<IBlog>(blogsURL);
   }
 }

@@ -1,5 +1,35 @@
 <div class="bg-wrapper">Publications</div>
 
-<h1 class="text-center py-5 exp-heading">
+<h1 class="text-center pt-5 pb-0 exp-heading ">
     <strong>Publications</strong>
 </h1>
+<p class="pt-0 pb-5 text-center">
+    <a href="https://medium.com/@awaisshaikh94">View All Publications</a>
+</p>
+
+<div class="container inner-page-main-section">
+    <div class="row">
+        <div class="col-md-12 col-12">
+            @if (blogs && blogs.length) {
+                <div class="items row">
+                    @for (item of blogs; track $index) {
+                        <div class="col-md-4 col-12 text-center mb-5 cursor-pointer" (click)="onBlogView(item.url)">
+                            @if (!item.image) {
+                                <img class="blog-img rounded mb-3" src="../../../assets/img/placeholder-img.jpeg" [alt]="item.title" />
+                            } @else {
+                                <img class="blog-img rounded mb-3" [src]="item.image" [alt]="item.title" />
+                            }
+
+                            <h5 class="text-truncate"><strong>{{item.title}}</strong></h5>
+                            <p>{{item.date}}</p>
+                            <p class="mb-0">{{item.description}}</p>
+                        </div>
+                    }
+                </div>
+            }
+            @else {
+                <img class="d-block m-auto w-50" src="../../../../assets/img/loading-colored.gif" alt="Loading ..." srcset="../../../../assets/img/loading-colored.gif">
+            }
+        </div>
+    </div>
+</div>

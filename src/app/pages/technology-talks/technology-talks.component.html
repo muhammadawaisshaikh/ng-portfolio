@@ -11,7 +11,7 @@
                 <div class="items row">
                     @for (item of techSpeaking; track $index) {
                         <div class="col-md-4 col-12 text-center mb-5 cursor-pointer" (click)="onDetails(item)">
-                            <img class="event-img rounded mb-3" [src]="item.coverImg" alt="Tech Speaker" />
+                            <img class="event-img rounded mb-3" [src]="item.coverImg" [alt]="item.event" />
 
                             <h5 class="text-truncate"><strong>{{item.event}}</strong></h5>
                             <p class="mb-0">{{item.organizer}}</p>
