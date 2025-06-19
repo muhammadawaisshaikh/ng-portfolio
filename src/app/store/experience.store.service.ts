@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { IExperience } from '../interfaces/experience';
 import { lastValueFrom, map } from 'rxjs';
+import { sortByTenure } from '../helpers/sort-by-date.helper';
 
 type ExperienceState = {
   experiences: IExperience[];
@@ -26,7 +27,9 @@ export const ExperienceStore = signalStore(
         )
       );
 
-      patchState(store, { experiences, isLoading: false });
+      const sortedExperiences = sortByTenure(experiences);
+
+      patchState(store, { experiences: sortedExperiences, isLoading: false });
     },
   }))
 );
