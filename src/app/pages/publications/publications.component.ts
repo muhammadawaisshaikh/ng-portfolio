@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api/api.service';
 import { Router } from '@angular/router';
 import { IBlog } from '../../interfaces/blog';
 import { sortByYearAndMonth } from '../../helpers/sort-by-date.helper';
+import { MediumRssService } from '../../services/api/medium-rss.service';
 
 @Component({
     selector: 'app-publications',
@@ -14,11 +15,13 @@ export class PublicationsComponent {
     blogs: IBlog[] = [];
 
     constructor(
-        private apiService: ApiService
+        private apiService: ApiService,
+        private mediumRssService: MediumRssService,
     ) { }
 
     ngOnInit(): void {
         this.getTechSpeakingsData();
+        this.getMediumRssData();
     }
 
     getTechSpeakingsData() {
@@ -46,5 +49,20 @@ export class PublicationsComponent {
         if (url) {
             window.open(url, '_blank');
         }
+    }
+
+    getMediumRssData(): void {
+        this.mediumRssService.getMediumRssFeed().subscribe({
+            next: (res: any) => {
+                console.log('Medium RSS Feed:', res);
+                // Process the Medium RSS feed data as needed
+            },
+            error: (error) => {
+                console.error('Error fetching Medium RSS feed:', error);
+            },
+            complete: () => {
+                console.log('Medium RSS feed retrieval complete.');
+            }
+        });
     }
 }
