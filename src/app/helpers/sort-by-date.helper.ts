@@ -22,3 +22,23 @@ export const sortByYearAndMonth = (data: any[]): any[] => {
         }
     });
 }
+
+/**
+ * sortByTenure - Sorts the data by tenure, with the latest tenure first
+ * @param data - Array of data objects with a 'tenure' property e.g. "Jan 2020 - Present" | "Jan 2019 - Dec 2020"
+ * @returns Sorted array of data objects
+ */
+export const sortByTenure = (data: any[]): any[] => {
+    const sorted = Object.values(data).sort((a: any, b: any) => {
+        const getStartDate = (tenure: string) => {
+            const [start] = tenure.replace('Present', new Date().getFullYear().toString()).split(' - ');
+            return new Date(start + ' 01');
+        };
+        return getStartDate(a.tenure).getTime() - getStartDate(b.tenure).getTime();
+    });
+
+    // Reverse the order to have the latest first
+    sorted.reverse();
+
+    return sorted;
+}
