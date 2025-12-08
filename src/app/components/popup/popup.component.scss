@@ -24,21 +24,28 @@
 }
 
 .content {
-    padding-top: 0;
+    padding-top: 2rem;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
 }
 
 .close {
     font-size: 3rem;
     position: absolute;
-    top: 0rem;
-    right: 0.5rem;
-    z-index: 1;
+    top: 0.5rem;
+    right: 1rem;
+    z-index: 1001;
     color: #dc3545;
     cursor: pointer;
+    pointer-events: auto;
+
     i {
         background: #ffffff;
         border-radius: 50%;
         padding: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 }
 

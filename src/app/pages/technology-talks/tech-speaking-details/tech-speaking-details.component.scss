@@ -3,6 +3,13 @@
     object-fit: cover;
 }
 
+.card {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
 .img-fluid {
     width: 100%;
     height: 200px;
