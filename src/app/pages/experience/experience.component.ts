@@ -14,6 +14,7 @@ export class ExperienceComponent {
   ngOnInit(): void {
     this.store.loadExperienceData();
 
+    // TODO: Working state
     this.store.loadExperienceData().then(res => {
       console.log(res);
       
