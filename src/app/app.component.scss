@@ -8,9 +8,11 @@
     background: white;
     z-index: 9;
     transition: 1s;
+
     &.show {
         right: 0;
     }
+
     &.hide {
         right: -100%;
     }
@@ -23,4 +25,5 @@
     left: 2rem;
     color: black;
     cursor: pointer;
+    z-index: 999;
 }
