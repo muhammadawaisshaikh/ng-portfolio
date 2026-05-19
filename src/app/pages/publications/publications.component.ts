@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../services/api/api.service';
-import { Router } from '@angular/router';
-import { IBlog } from '../../interfaces/blog';
-import { sortByYearAndMonth } from '../../helpers/sort-by-date.helper';
-import { MediumRssService } from '../../services/api/medium-rss.service';
+
+interface ProfileLink {
+    id: string;
+    title: string;
+    description: string;
+    url: string;
+    iconClass: string;
+}
 
 @Component({
     selector: 'app-publications',
@@ -12,57 +15,40 @@ import { MediumRssService } from '../../services/api/medium-rss.service';
     styleUrl: './publications.component.scss'
 })
 export class PublicationsComponent {
-    blogs: IBlog[] = [];
-
-    constructor(
-        private apiService: ApiService,
-        private mediumRssService: MediumRssService,
-    ) { }
-
-    ngOnInit(): void {
-        this.getTechSpeakingsData();
-        this.getMediumRssData();
-    }
-
-    getTechSpeakingsData() {
-        this.apiService.getBlogs().subscribe({
-            next: (res: any) => {
-                const blogsData = Object.entries(res).map(([key, value]) => {
-                    if (typeof value === 'object' && value !== null) {
-                        return { id: key, ...value };
-                    }
-                    return null;
-                }).filter(Boolean) as IBlog[];
-
-                this.blogs = sortByYearAndMonth(blogsData);
-            },
-            error: (error) => {
-                console.error('Error fetching tech speaking data:', error);
-            },
-            complete: () => {
-                console.log('Tech speaking data retrieval complete.');
-            }
-        });
-    }
-
-    onBlogView(url: string | undefined): void {
-        if (url) {
-            window.open(url, '_blank');
+    readonly profiles: ProfileLink[] = [
+        {
+            id: 'medium',
+            title: 'Medium',
+            description: 'Articles, essays, and technical writing published from my Medium profile.',
+            url: 'https://medium.com/@awaisshaikh94',
+            iconClass: 'fa-brands fa-medium'
+        },
+        {
+            id: 'scholar',
+            title: 'Google Scholar',
+            description: 'Academic publications and citation profile on Google Scholar.',
+            url: 'https://scholar.google.com/citations?user=A8mP7UMAAAAJ&hl=en',
+            iconClass: 'fa-solid fa-graduation-cap'
+        },
+        {
+            id: 'researchgate',
+            title: 'ResearchGate',
+            description: 'Research profile and publications on ResearchGate.',
+            url: 'https://www.researchgate.net/profile/Muhammad-Awais-213',
+            iconClass: 'fa-solid fa-flask'
+        },
+        {
+            id: 'amazon',
+            title: 'Amazon Author Store',
+            description: 'Books and authored publications listed in my Amazon author store.',
+            url: 'https://www.amazon.com/stores/Mr.-Muhammad-Awais/author/B0DM9F12NJ',
+            iconClass: 'fa-brands fa-amazon'
         }
-    }
+    ];
 
-    getMediumRssData(): void {
-        this.mediumRssService.getMediumRssFeed().subscribe({
-            next: (res: any) => {
-                console.log('Medium RSS Feed:', res);
-                // Process the Medium RSS feed data as needed
-            },
-            error: (error) => {
-                console.error('Error fetching Medium RSS feed:', error);
-            },
-            complete: () => {
-                console.log('Medium RSS feed retrieval complete.');
-            }
-        });
+    openProfile(url: string | undefined): void {
+        if (url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
     }
 }
