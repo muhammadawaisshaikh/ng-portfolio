@@ -1,9 +1,9 @@
 // about.store.ts
-import { signalStore, withState, withMethods, patchState } from '@ngrx/signals';
-import { inject } from '@angular/core';
-import { ApiService } from '../services/api/api.service';
+import { signalStore, withState, withHooks, patchState } from '@ngrx/signals';
+import { effect } from '@angular/core';
+import { httpResource } from '@angular/common/http';
 import { IAbout } from '../interfaces/about';
-import { lastValueFrom, map } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 type AboutState = {
   about: IAbout;
@@ -12,23 +12,30 @@ type AboutState = {
 
 const initialState: AboutState = {
   about: {},
-  isLoading: false,
+  isLoading: true,
 };
 
 export const AboutStore = signalStore(
-  // { providedIn: 'root' }, // if you want to access this store globally in your app
   withState(initialState),
-  withMethods((store, apiService = inject(ApiService)) => ({
-    async loadAboutData(): Promise<void> {
-      patchState(store, { isLoading: true });
+  withHooks((store) => {
+    const aboutResource = httpResource<Record<string, IAbout>>(
+      () => `${environment.apiUrl}/about.json`
+    );
 
-      const about = await lastValueFrom(
-        apiService.getAboutInfo().pipe(
-          map(res => Object.entries(res)[0][1] as IAbout)
-        )
-      );
+    return {
+      onInit() {
+        effect(() => {
+          const isLoading = aboutResource.isLoading();
+          const data = aboutResource.value();
 
-      patchState(store, { about, isLoading: false });
-    },
-  }))
+          if (data) {
+            const about = Object.values(data)[0] as IAbout;
+            patchState(store, { about, isLoading: false });
+          } else {
+            patchState(store, { isLoading });
+          }
+        });
+      },
+    };
+  })
 );

@@ -1,4 +1,4 @@
-<div class="page-animate" [ngClass]="isPageAnimate ? 'show' : 'hide'">
+<div class="page-animate" [ngClass]="isPageAnimate() ? 'show' : 'hide'">
     <div class="container">
         <a (click)="close()" class="close">
             <i class="fa-solid fa-circle-xmark"></i>
@@ -13,6 +13,6 @@
 <router-outlet />
 
 <!-- Loading Splash screen to go top and bottom smoothly  -->
-@if (!isHide) {
+@if (!isHide()) {
     <app-loading-splash />
 }

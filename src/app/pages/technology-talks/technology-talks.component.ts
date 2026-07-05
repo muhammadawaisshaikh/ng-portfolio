@@ -1,11 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { ApiService } from '../../services/api/api.service';
+import { Component, computed, signal } from '@angular/core';
+import { httpResource } from '@angular/common/http';
 import { ITechSpeaking } from '../../interfaces/tech-speaking';
 import { HashtagsComponent } from '../../components/hashtags/hashtags.component';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { TechSpeakingDetailsComponent } from "./tech-speaking-details/tech-speaking-details.component";
 import { ActivatedRoute, Router } from '@angular/router';
 import { sortByYearAndMonth } from '../../helpers/sort-by-date.helper';
+import { environment } from '../../../environment/environment';
 
 @Component({
   selector: 'app-technology-talks',
@@ -14,49 +15,70 @@ import { sortByYearAndMonth } from '../../helpers/sort-by-date.helper';
   styleUrl: './technology-talks.component.scss'
 })
 export class TechnologyTalksComponent {
-  techSpeaking: ITechSpeaking[] = [];
-  isOpenPopup = signal(false);
-  selectedTechSpeaking: ITechSpeaking = {};
-  techSpeakingDetails = signal<ITechSpeaking>({});
+  readonly isOpenPopup = signal(false);
+  readonly selectedTechSpeaking = signal<ITechSpeaking>({});
+  private readonly selectedId = signal<string | null>(null);
+
+  // httpResource for the tech speaking list - auto-fetches on component init
+  private techSpeakingResource = httpResource<Record<string, ITechSpeaking>>(
+    () => `${environment.apiUrl}/tech-speaking.json`
+  );
+
+  // httpResource for tech speaking details - reactively fetches when selectedId changes
+  private techSpeakingDetailResource = httpResource<ITechSpeaking>(() => {
+    const id = this.selectedId();
+    if (!id) return undefined; // Don't fetch if no id
+    return `${environment.apiUrl}/tech-speaking/${id}.json`;
+  });
+
+  // Computed signal that transforms raw resource data into sorted array
+  readonly techSpeaking = computed(() => {
+    const data = this.techSpeakingResource.value();
+    if (!data) return [];
+
+    const techSpeakingData = Object.entries(data).map(([key, value]) => {
+      if (typeof value === 'object' && value !== null) {
+        return { id: key, ...value };
+      }
+      return null;
+    }).filter(Boolean) as ITechSpeaking[];
+
+    return sortByYearAndMonth(techSpeakingData);
+  });
 
   constructor(
-    private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.getTechSpeakingsData();
-
-     // Fetch tech speaking details if id is present in the query params
+    // Watch for query param changes to load details
     this.route.queryParams.subscribe(params => {
       const id = params['id'];
       if (id) {
-        this.fetchTechSpeakingDetails(id);
+        this.selectedId.set(id);
+        this.watchDetailResource(id);
       }
     });
   }
 
-  // Fetches tech speaking data from the API
-  getTechSpeakingsData() {
-    this.apiService.getTechSpeakingInfo().subscribe({
-      next: (res: any) => {
-        const techSpeakingData = Object.entries(res).map(([key, value]) => {
-          if (typeof value === 'object' && value !== null) {
-            return { id: key, ...value };
-          }
-          return null;
-        }).filter(Boolean) as ITechSpeaking[];
-
-        this.techSpeaking = sortByYearAndMonth(techSpeakingData);
-      },
-      error: (error) => {
-        console.error('Error fetching tech speaking data:', error);
-      },
-      complete: () => {
-        console.log('Tech speaking data retrieval complete.');
+  private watchDetailResource(id: string): void {
+    // Use effect-like pattern: check resource on next change detection
+    const checkDetail = setInterval(() => {
+      const data = this.techSpeakingDetailResource.value();
+      if (data) {
+        this.selectedTechSpeaking.set(data);
+        this.isOpenPopup.set(true);
+        clearInterval(checkDetail);
       }
-    });
+      if (this.techSpeakingDetailResource.error()) {
+        console.error('Error fetching tech speaking details');
+        clearInterval(checkDetail);
+      }
+    }, 100);
+
+    // Safety timeout
+    setTimeout(() => clearInterval(checkDetail), 10000);
   }
 
   getHashTags(technologies: string): string[] {
@@ -67,7 +89,7 @@ export class TechnologyTalksComponent {
   }
 
   onDetails(item: ITechSpeaking) {
-    this.selectedTechSpeaking = item;
+    this.selectedTechSpeaking.set(item);
     this.togglePopup();
 
     this.router.navigate([], { queryParams: { id: item.id }, queryParamsHandling: 'merge' });
@@ -77,26 +99,8 @@ export class TechnologyTalksComponent {
     this.isOpenPopup.update(value => !value);
 
     if (!this.isOpenPopup()) {
-      this.router.navigate([], { queryParams: { id: null }, queryParamsHandling: 'merge' });  
+      this.selectedId.set(null);
+      this.router.navigate([], { queryParams: { id: null }, queryParamsHandling: 'merge' });
     }
-  }
-
-  // Fetches tech speaking details by id
-  fetchTechSpeakingDetails(id: string): void {
-    this.apiService.getTechSpeakingInfoById(id).subscribe({
-      next: (data: ITechSpeaking) => {
-        if (data) {
-          this.selectedTechSpeaking = data;
-          this.techSpeakingDetails.set(data);
-          this.isOpenPopup.set(true);
-
-          this.router.navigate([], {
-            queryParams: { id }, 
-            queryParamsHandling: 'merge'
-          });
-        }
-      },
-      error: (err) => console.error('Error fetching tech speaking details:', err)
-    });
   }
 }

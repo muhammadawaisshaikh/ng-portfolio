@@ -4,21 +4,10 @@ import { ExperienceStore } from '../../store/experience.store.service';
 @Component({
     selector: 'app-experience',
     imports: [],
-    providers: [ExperienceStore], // Private instance for this component
+    providers: [ExperienceStore],
     templateUrl: './experience.component.html',
     styleUrl: './experience.component.scss'
 })
 export class ExperienceComponent {
   readonly store = inject(ExperienceStore);
-
-  ngOnInit(): void {
-    this.store.loadExperienceData();
-
-    // TODO: Working state
-    this.store.loadExperienceData().then(res => {
-      console.log(res);
-      
-    })
-    
-  }
 }

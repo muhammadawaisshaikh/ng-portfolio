@@ -1,8 +1,8 @@
-import { signalStore, withState, withMethods, patchState } from '@ngrx/signals';
-import { inject } from '@angular/core';
-import { ApiService } from '../services/api/api.service';
+import { signalStore, withState, withHooks, patchState } from '@ngrx/signals';
+import { effect } from '@angular/core';
+import { httpResource } from '@angular/common/http';
 import { IProject } from '../interfaces/project';
-import { lastValueFrom, map } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 type ProjectState = {
   projects: IProject[];
@@ -11,22 +11,30 @@ type ProjectState = {
 
 const initialState: ProjectState = {
   projects: [],
-  isLoading: false,
+  isLoading: true,
 };
 
 export const ProjectsStore = signalStore(
   withState(initialState),
-  withMethods((store, apiService = inject(ApiService)) => ({
-    async loadProjectsData(): Promise<void> {
-      patchState(store, { isLoading: true });
+  withHooks((store) => {
+    const projectsResource = httpResource<Record<string, IProject>>(
+      () => `${environment.apiUrl}/projects.json`
+    );
 
-      const projects = await lastValueFrom(
-        apiService.getProjectsInfo().pipe(
-          map(res => Object.values(res) as IProject[])
-        )
-      );
+    return {
+      onInit() {
+        effect(() => {
+          const isLoading = projectsResource.isLoading();
+          const data = projectsResource.value();
 
-      patchState(store, { projects, isLoading: false });
-    },
-  }))
+          if (data) {
+            const projects = Object.values(data) as IProject[];
+            patchState(store, { projects, isLoading: false });
+          } else {
+            patchState(store, { isLoading });
+          }
+        });
+      },
+    };
+  })
 );

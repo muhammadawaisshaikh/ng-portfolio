@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalStateService } from '../../services/global-state/global-state.service';
 import { NgClass } from '@angular/common';
@@ -20,14 +20,12 @@ export class HeaderComponent implements OnInit {
     { path: 'honors-awards', name: 'Honors & Awards'},
   ];
 
-  toggleButton: boolean = false;
-  sidebar: boolean = false;
-  fadeSection: boolean = false;
+  readonly toggleButton = signal(false);
+  readonly sidebar = signal(false);
+  readonly fadeSection = signal(false);
 
-  constructor(
-    private globalState: GlobalStateService,
-    private router: Router
-  ) { }
+  private globalState = inject(GlobalStateService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -52,13 +50,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu() {
-    // animating icon
-    this.toggleButton = !this.toggleButton;
-
-    // animating sidebar
-    this.sidebar = !this.sidebar;
-
-    // enabling fade section 
-    this.fadeSection = !this.fadeSection;
+    this.toggleButton.update(v => !v);
+    this.sidebar.update(v => !v);
   }
 }
