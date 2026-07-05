@@ -27,7 +27,7 @@ export class BannerComponent implements OnInit, OnDestroy {
     position: 'horizontal'
   }
 
-  currentHashtag = signal(this.hashtags[0]);
+  readonly currentHashtag = signal(this.hashtags[0]);
   private hashtagIndex: number = 0;
   private intervalId: any;
 

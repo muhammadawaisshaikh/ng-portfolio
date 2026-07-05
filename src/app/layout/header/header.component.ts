@@ -20,9 +20,9 @@ export class HeaderComponent implements OnInit {
     { path: 'honors-awards', name: 'Honors & Awards'},
   ];
 
-  toggleButton = signal(false);
-  sidebar = signal(false);
-  fadeSection = signal(false);
+  readonly toggleButton = signal(false);
+  readonly sidebar = signal(false);
+  readonly fadeSection = signal(false);
 
   private globalState = inject(GlobalStateService);
   private router = inject(Router);

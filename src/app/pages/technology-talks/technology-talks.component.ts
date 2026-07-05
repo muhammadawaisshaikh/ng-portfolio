@@ -14,10 +14,9 @@ import { sortByYearAndMonth } from '../../helpers/sort-by-date.helper';
   styleUrl: './technology-talks.component.scss'
 })
 export class TechnologyTalksComponent {
-  techSpeaking = signal<ITechSpeaking[]>([]);
-  isOpenPopup = signal(false);
-  selectedTechSpeaking = signal<ITechSpeaking>({});
-  techSpeakingDetails = signal<ITechSpeaking>({});
+  readonly techSpeaking = signal<ITechSpeaking[]>([]);
+  readonly isOpenPopup = signal(false);
+  readonly selectedTechSpeaking = signal<ITechSpeaking>({});
 
   constructor(
     private apiService: ApiService,
@@ -87,7 +86,6 @@ export class TechnologyTalksComponent {
       next: (data: ITechSpeaking) => {
         if (data) {
           this.selectedTechSpeaking.set(data);
-          this.techSpeakingDetails.set(data);
           this.isOpenPopup.set(true);
 
           this.router.navigate([], {
