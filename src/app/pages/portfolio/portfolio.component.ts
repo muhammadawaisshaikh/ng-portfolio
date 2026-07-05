@@ -10,8 +10,4 @@ import { ProjectsStore } from '../../store/projects.store.service';
 })
 export class PortfolioComponent {
     readonly store = inject(ProjectsStore);
-
-    ngOnInit(): void {
-        this.store.loadProjectsData();
-    }
 }
