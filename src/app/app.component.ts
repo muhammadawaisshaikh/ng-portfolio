@@ -16,13 +16,8 @@ export class AppComponent {
 
   title = 'ng-portfolio';
 
-  get isHide() {
-    return this.globalState.isHide();
-  }
-
-  get isPageAnimate() {
-    return this.globalState.isPageAnimate();
-  }
+  readonly isHide = this.globalState.isHide;
+  readonly isPageAnimate = this.globalState.isPageAnimate;
 
   close() {
     this.globalState.setIsPageAnimate(false);
