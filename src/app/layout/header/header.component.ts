@@ -52,6 +52,5 @@ export class HeaderComponent implements OnInit {
   toggleMenu() {
     this.toggleButton.update(v => !v);
     this.sidebar.update(v => !v);
-    this.fadeSection.update(v => !v);
   }
 }
