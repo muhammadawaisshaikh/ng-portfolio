@@ -14,9 +14,9 @@ import { sortByYearAndMonth } from '../../helpers/sort-by-date.helper';
   styleUrl: './technology-talks.component.scss'
 })
 export class TechnologyTalksComponent {
-  techSpeaking: ITechSpeaking[] = [];
+  techSpeaking = signal<ITechSpeaking[]>([]);
   isOpenPopup = signal(false);
-  selectedTechSpeaking: ITechSpeaking = {};
+  selectedTechSpeaking = signal<ITechSpeaking>({});
   techSpeakingDetails = signal<ITechSpeaking>({});
 
   constructor(
@@ -48,7 +48,7 @@ export class TechnologyTalksComponent {
           return null;
         }).filter(Boolean) as ITechSpeaking[];
 
-        this.techSpeaking = sortByYearAndMonth(techSpeakingData);
+        this.techSpeaking.set(sortByYearAndMonth(techSpeakingData));
       },
       error: (error) => {
         console.error('Error fetching tech speaking data:', error);
@@ -67,7 +67,7 @@ export class TechnologyTalksComponent {
   }
 
   onDetails(item: ITechSpeaking) {
-    this.selectedTechSpeaking = item;
+    this.selectedTechSpeaking.set(item);
     this.togglePopup();
 
     this.router.navigate([], { queryParams: { id: item.id }, queryParamsHandling: 'merge' });
@@ -86,7 +86,7 @@ export class TechnologyTalksComponent {
     this.apiService.getTechSpeakingInfoById(id).subscribe({
       next: (data: ITechSpeaking) => {
         if (data) {
-          this.selectedTechSpeaking = data;
+          this.selectedTechSpeaking.set(data);
           this.techSpeakingDetails.set(data);
           this.isOpenPopup.set(true);
 

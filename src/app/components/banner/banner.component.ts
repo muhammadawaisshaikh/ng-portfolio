@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { GsapTextService } from '../../helpers/gsap/gsap-text.service';
 import { InfiniteScrollingItemsComponent } from '../infinite-scrolling-items/infinite-scrolling-items.component';
 import { IInfiniteContentScroll } from '../../interfaces/infinite-scroll';
@@ -27,7 +27,7 @@ export class BannerComponent implements OnInit, OnDestroy {
     position: 'horizontal'
   }
 
-  currentHashtag: string = this.hashtags[0];
+  currentHashtag = signal(this.hashtags[0]);
   private hashtagIndex: number = 0;
   private intervalId: any;
 
@@ -47,7 +47,7 @@ export class BannerComponent implements OnInit, OnDestroy {
   startAnimation(): void {
     this.intervalId = setInterval(() => {
       this.hashtagIndex = (this.hashtagIndex + 1) % this.hashtags.length;
-      this.currentHashtag = this.hashtags[this.hashtagIndex];
+      this.currentHashtag.set(this.hashtags[this.hashtagIndex]);
     }, 1000);
   }
 }

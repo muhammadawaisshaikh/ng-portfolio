@@ -1,21 +1,18 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalStateService {
 
-  public isHide: any = new BehaviorSubject(false);
-  public isPageAnimate: any = new BehaviorSubject(false);
-
-  constructor() { }
+  readonly isHide = signal(false);
+  readonly isPageAnimate = signal(false);
 
   setIsHide(val: boolean) {
-    return this.isHide.next(val);
+    this.isHide.set(val);
   }
 
   setIsPageAnimate(val: boolean) {
-    return this.isPageAnimate.next(val);
+    this.isPageAnimate.set(val);
   }
 }

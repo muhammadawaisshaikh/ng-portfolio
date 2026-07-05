@@ -7,9 +7,9 @@
 <div class="container inner-page-main-section">
     <div class="row">
         <div class="col-md-12 col-12">
-            @if (techSpeaking && techSpeaking.length) {
+            @if (techSpeaking().length) {
                 <div class="items row">
-                    @for (item of techSpeaking; track $index) {
+                    @for (item of techSpeaking(); track $index) {
                         <div class="col-md-4 col-12 text-center mb-5 cursor-pointer" (click)="onDetails(item)">
                             <img class="event-img rounded mb-3" [src]="item.coverImg" [alt]="item.event" />
 
@@ -31,6 +31,6 @@
 
 @if (isOpenPopup()) {
     <app-popup [isOpen]="isOpenPopup()" (toggle)="togglePopup()">
-        <app-tech-speaking-details [conference]="selectedTechSpeaking" />
+        <app-tech-speaking-details [conference]="selectedTechSpeaking()" />
     </app-popup>
 }
